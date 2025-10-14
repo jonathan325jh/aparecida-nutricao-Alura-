@@ -1,5 +1,5 @@
 var titulo = document.querySelector(".titulo");
-titulo.textContent = "Aparecida Nutricionista"; // muda o titulo
+titulo.textContent = "Aparecida Nutricionista";
 
 var pacientes = document.querySelectorAll(".paciente");
 
@@ -45,3 +45,14 @@ function calculaImc(peso, altura){
     
     return imc.toFixed(2);
  }
+
+ function obtemPacienteDoFormulario(form) {
+
+  var paciente = {
+      nome: form.nome.value,
+      peso: form.peso.value,
+      altura: form.altura.value,
+      gordura: form.gordura.value,
+      imc: calculaImc(form.peso.value, form.altura.value)
+  }
+}
