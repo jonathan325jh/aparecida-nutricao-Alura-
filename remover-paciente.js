@@ -1,2 +1,12 @@
-429: Too Many Requests
-For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).
+var pacientes = document.querySelectorAll(".paciente");
+
+var tabela = document.querySelector("#tabela-pacientes");
+
+tabela.addEventListener("dblclick", function(event) {
+    event.target.parentNode.classList.add("fadeOut");
+
+    setTimeout(function() {
+        event.target.parentNode.remove();
+    }, 500);
+
+});
