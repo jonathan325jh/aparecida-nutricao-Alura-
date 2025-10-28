@@ -1,2 +1,25 @@
-429: Too Many Requests
-For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).
+var botaoAdicionar = document.querySelector("#buscar-pacientes");
+
+botaoAdicionar.addEventListener("click", function() {
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("GET", "https://api-pacientes.herokuapp.com/pacientes");
+
+    xhr.addEventListener("load", function() {
+        var erroAjax = document.querySelector("#erro-ajax");
+
+        if (xhr.status == 200) {
+            erroAjax.classList.add("invisivel");
+            var resposta = xhr.responseText;
+            var pacientes = JSON.parse(resposta);
+
+            pacientes.forEach(function(paciente) {
+                adicionaPacienteNaTabela(paciente);
+            });
+        } else {
+            erroAjax.classList.remove("invisivel");
+        }
+    });
+
+    xhr.send();
+});
